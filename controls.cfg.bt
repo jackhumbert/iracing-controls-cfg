@@ -200,52 +200,56 @@ uint ccfg_version;
 uint ccfg_size;
 //ubyte data[ccfg_size];
 
-struct {
     
-    uint num4;
-    uint num5;
-    uint num6;
-    uint num7;
-    uint num8;
-    uint num9;
-    int num10;
-    
-    float num11;
-    ubyte unk12;
-    ubyte unk13;
-    ubyte unk14;
-    
-    float unk15;
-    uint unk16;
-    ubyte unk17;
-    ubyte unk18;
-    ubyte unk19;
-    ubyte unk20[32];
-    
-    ubyte unk21[32];
-    ubyte unk22;
-    
-    ubyte unk23;
-    uint unk24;
-    float unk25;
-    
-    ubyte unk26;
-    
-    ubyte unk27;
-    ubyte unk28;
-    ubyte unk29;
-    ubyte unk30;
-    float unk31;
-    
-    uint unk32;
-    ubyte unk33;
-    ubyte unk34;
-    
-    float unk35;
-    float unk37;
-    float unk38;
+enum {
+    AutoBlip = 0,
+    AutoClutch = 1,
+    AntiStallClutch = 2,
+    None = 3,
+    AutoShift = 4,
+} ClutchAssist;
+enum { 
+    Sequential = 1,
+    DirectSelection = 3,
+} Gearbox;
+uint WheelRange; // 60 - 1080 degrees
+uint MapRange; // degrees
+uint unk8;
+uint unk9;
+uint unk10;
 
-} cfg;
+float BrakeForceFactor;
+ubyte unk12;
+ubyte unk13;
+
+ubyte ForceFeedbackEnable;
+float ForceFeedbackStrength;
+float ForceFeedbackDamping;
+
+ubyte DrivingLine;
+ubyte ThrottleAssistance;
+ubyte BrakeAssistance;
+
+ubyte unk20[32];
+ubyte unk21[32];
+
+ubyte AutoPitSpeedLimiter;
+
+ubyte ForceFeedbackUseLinearMode;
+float ForceFeedbackMinForce; // 0 - 100
+float MouseDrivingSensitivity; // 10 - 400
+ubyte ForceFeedbackReduceForceWhenParked;
+ubyte AutoWipers;
+ubyte AutoTearOff;
+ubyte PitExitLine;
+ubyte AutoEngineStart;
+float ForceFeedbackWheelForce;
+float ForceFeebackSmoothing; // 0 - 100
+ubyte BrakeLoadCell;
+ubyte ForceFeedbackAuto;
+float ForceFeedbackIntensity; // 0 - 100
+float BrakeMaxRange; // 0 - 1
+float ClutchBitpoint;
 
 uint ctrl_id;
 uint ctrl_version;

@@ -1,0 +1,209 @@
+//------------------------------------------------
+//--- 010 Editor v15.0.1 Binary Template
+//
+//      File: controls.cfg.bt
+//   Authors: Jack Humbert
+//   Version: 
+//   Purpose: To update device GUIDs for controls assigned in iRacing
+//  Category: 
+// File Mask: controls.cfg
+//  ID Bytes: 47 46 43 43
+//   History: 
+//------------------------------------------------
+
+typedef enum <uint> {
+    KeyI = 0x49,
+    KeyL = 0x4C,
+    KeyR = 0x52,
+    KeyS = 0x53,
+    KeyLeftBracket = 0x76,
+    KeyRightBracket = 0x78,
+    KeyF1 = 0xC5,
+    KeyF2 = 0xC6,
+    KeyF3 = 0xC7,
+    KeyF4 = 0xC8,
+} Key;
+
+typedef enum <uint> {
+    ModsNone = 0,
+    ModsShift = 0x300000,
+    //ModsAlt = 0x300000,
+    //ModsControl = 0x0C0000,
+} Mods;
+
+typedef enum <uint64> {
+    Axis0 = 0,
+    Axis1 = 1,
+    Axis2 = 2,
+    Axis3 = 3,
+    Axis4 = 4,
+    Axis5 = 5,
+    Axis6 = 6,
+} Axis;
+
+typedef enum <uint64> {
+    Button1 = 0x1,
+    Button2 = 0x2,
+    Button3 = 0x4,
+    Button4 = 0x8,
+    Button5 = 0x10,
+    Button6 = 0x20,
+    Button7 = 0x40,
+    Button8 = 0x80,
+    Button9 = 0x100,
+    Button10 = 0x200,
+    Button11 = 0x400,
+    Button12 = 0x800,
+    Button13 = 0x1000,
+    Button14 = 0x2000,
+    Button15 = 0x4000,
+    Button16 = 0x8000,
+    Button17 = 0x10000,
+    Button18 = 0x20000,
+    Button19 = 0x40000,
+    Button20 = 0x80000,
+    Button21 = 0x100000,
+    Button22 = 0x200000,
+    Button23 = 0x400000,
+    Button24 = 0x800000,
+    Button25 = 0x1000000,
+    Button26 = 0x2000000,
+    Button27 = 0x4000000,
+    Button28 = 0x8000000,
+    Button29 = 0x10000000,
+    Button30 = 0x20000000,
+    Button31 = 0x40000000,
+    Button32 = 0x80000000,
+    Button33 = 0x100000000,
+    Button34 = 0x200000000,
+    Button35 = 0x400000000,
+    Button36 = 0x800000000,
+    Button37 = 0x1000000000,
+    Button38 = 0x2000000000,
+    Button39 = 0x4000000000,
+    Button40 = 0x8000000000,
+    Button41 = 0x10000000000,
+    Button42 = 0x20000000000,
+    Button43 = 0x40000000000,
+    Button44 = 0x80000000000,
+    Button45 = 0x100000000000,
+    Button46 = 0x200000000000,
+    Button47 = 0x400000000000,
+    Button48 = 0x800000000000,
+    Button49 = 0x1000000000000,
+    Button50 = 0x2000000000000,
+    Button51 = 0x4000000000000,
+    Button52 = 0x8000000000000,
+    Button53 = 0x10000000000000,
+    Button54 = 0x20000000000000,
+    Button55 = 0x40000000000000,
+    Button56 = 0x80000000000000,
+    Button57 = 0x100000000000000,
+    Button58 = 0x200000000000000,
+    Button59 = 0x400000000000000,
+    Button60 = 0x800000000000000,
+    Button61 = 0x1000000000000000,
+    Button62 = 0x2000000000000000,
+    Button63 = 0x4000000000000000,
+    Button64 = 0x8000000000000000,
+} Button;
+
+typedef enum <uint> {
+    TypeUndefined = 0,
+    TypeAxis = 0x01,
+    TypeButton = 0x02,
+    TypeKeyboard = 0x04,
+    TypeUnk8 = 0x08,
+    TypeTouchMaybe = 0x10,
+    TypeUnk20 = 0x20
+} Type;
+
+typedef struct {
+    string name;
+    uint unk1;
+    uint unk2;
+    Type type;
+    if (type == TypeAxis) {
+        Axis axis;
+        GUID guid;
+        enum <uint> {
+          DirectionPositive = 0,
+          DirectionNegative = 1,  
+        } axis_direction;
+        ubyte pad[12];
+    } else if (type == TypeButton) {
+        Button button;
+        ubyte pad[16];
+        GUID guid;
+    } else if (type == TypeKeyboard) {
+        Key key;
+        Mods mods;  
+        GUID guid_1;
+        GUID guid_2;
+    } else {
+        uint64 unk;    
+        GUID guid_1;
+        GUID guid_2;
+    }
+} Control <optimize=false, read=Str("%s %s", name, exists(guid) ? GUIDToString(guid) : "")>;
+
+uint ccfg_id;
+uint ccfg_version;
+uint ccfg_size;
+//ubyte data[ccfg_size];
+
+struct {
+    
+    uint num4;
+    uint num5;
+    uint num6;
+    uint num7;
+    uint num8;
+    uint num9;
+    int num10;
+    
+    float num11;
+    ubyte unk12;
+    ubyte unk13;
+    ubyte unk14;
+    
+    float unk15;
+    uint unk16;
+    ubyte unk17;
+    ubyte unk18;
+    ubyte unk19;
+    ubyte unk20[32];
+    
+    ubyte unk21[32];
+    ubyte unk22;
+    
+    ubyte unk23;
+    uint unk24;
+    float unk25;
+    
+    ubyte unk26;
+    
+    ubyte unk27;
+    ubyte unk28;
+    ubyte unk29;
+    ubyte unk30;
+    float unk31;
+    
+    uint unk32;
+    ubyte unk33;
+    ubyte unk34;
+    
+    float unk35;
+    float unk37;
+    float unk38;
+
+} cfg;
+
+uint ctrl_id;
+uint ctrl_version;
+uint ctrl_size;
+
+local uint64 start = FTell();
+while (FTell() < start + ctrl_size) {
+    Control control;
+}

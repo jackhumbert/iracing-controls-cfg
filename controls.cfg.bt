@@ -252,6 +252,8 @@ uint ctrl_version;
 uint ctrl_size;
 
 local uint64 start = FTell();
+local uint64 control_size = 0;
 while (FTell() < start + ctrl_size) {
     Control control;
+    control_size++;
 }

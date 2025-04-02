@@ -11,7 +11,6 @@
 //   History: 
 //------------------------------------------------
 
-// Scancodes + 0x3A?
 typedef enum <uint> {
     KeyUpArrow = 0x26,
     KeyDownArrow = 0x28,
@@ -181,7 +180,8 @@ typedef struct {
         ubyte pad[12];
     } else if (type == TypeButton) {
         Button buttons; // can be multiple
-        ubyte pad[16];
+        Button buttons2; // can be multiple
+        ubyte pad[8];
         GUID guid;
     } else if (type == TypeKeyboard) {
         Key key;
@@ -220,7 +220,8 @@ enum {
 } Gearbox;
 uint WheelRange; // 60 - 1080 degrees
 uint MapRange; // degrees
-uint unk8;
+
+float unk8;
 uint unk9;
 uint unk10;
 
